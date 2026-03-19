@@ -56,7 +56,6 @@
 </head>
 <body>
 
-  <!-- Make sure the filename matches exactly and has no spaces, or use %20 -->
   <img src="fake-school-logo.png" alt="Fake University Logo -- this is for educational purposes only!" class="top-image">
 
   <div class="box">
@@ -67,38 +66,28 @@
     <div id="result"></div>
   </div>
 
-  <!-- Hidden developer note for students -->
+  <!-- Hidden developer note -->
   <!--
+    🔐 username = hacker1
     🔐 password = enterhere
   -->
 
   <script>
-    async function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-
-      // For now, simulate login (since /api/login doesn't exist)
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
       const result = document.getElementById("result");
-      if (password === "enterhere") {
-        result.innerHTML = "<span style='color:#4ade80'>Access Granted</span>";
-      } else {
-        result.innerHTML = "<span class='error'>Access Denied</span>";
-      }
 
-      // If you later have a real backend:
-      /*
-      const res = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-      });
-      const data = await res.json();
-      if (data.success) {
+      // Check credentials
+      if(username === "hacker1" && password === "enterhere") {
         result.innerHTML = "<span style='color:#4ade80'>Access Granted</span>";
+        // Redirect after a short delay so they can see the message
+        setTimeout(() => {
+          window.location.href = "ENTER_URL_HERE"; // <-- Replace with the challenge URL
+        }, 500);
       } else {
         result.innerHTML = "<span class='error'>Access Denied</span>";
       }
-      */
     }
   </script>
 
