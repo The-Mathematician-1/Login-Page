@@ -9,13 +9,16 @@
       background: #0f172a;
       color: white;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
-    .top-image{
-      width: 100%;
+
+    .top-image {
+      width: 200px; /* adjust size */
       height: auto;
+      margin-bottom: 20px;
       display: block;
     }
 
@@ -53,24 +56,20 @@
 </head>
 <body>
 
-  <img src="fake school logo.png" alt="This is a fake university. This exists solely for education purposes." class="top-image">
-  
+  <!-- Make sure the filename matches exactly and has no spaces, or use %20 -->
+  <img src="fake20%school20%logo.png" alt="Fake University Logo" class="top-image">
+
   <div class="box">
     <h2>Login</h2>
-
     <input id="username" placeholder="Username">
     <input id="password" type="password" placeholder="Password">
-
     <button onclick="login()">Log In</button>
-
     <div id="result"></div>
   </div>
 
-  <!-- 
-    =========================================
-    🔐 Hidden Developer Note (for students)
-    password = enterhere
-    =========================================
+  <!-- Hidden developer note for students -->
+  <!--
+    🔐 password = enterhere
   -->
 
   <script>
@@ -78,23 +77,28 @@
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
+      // For now, simulate login (since /api/login doesn't exist)
+      const result = document.getElementById("result");
+      if (password === "enterhere") {
+        result.innerHTML = "<span style='color:#4ade80'>Access Granted</span>";
+      } else {
+        result.innerHTML = "<span class='error'>Access Denied</span>";
+      }
+
+      // If you later have a real backend:
+      /*
       const res = await fetch("/api/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
       });
-
       const data = await res.json();
-
-      const result = document.getElementById("result");
-
       if (data.success) {
         result.innerHTML = "<span style='color:#4ade80'>Access Granted</span>";
       } else {
         result.innerHTML = "<span class='error'>Access Denied</span>";
       }
+      */
     }
   </script>
 
